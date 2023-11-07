@@ -1,11 +1,11 @@
-<?php
-class CoverageFunctionParenthesesTest extends PHPUnit_Framework_TestCase
-{
-    /**
-     * @covers ::globalFunction()
-     */
-    public function testSomething()
-    {
-        globalFunction();
-    }
-}
+<?php
+class CoverageFunctionParenthesesTest extends PHPUnit_Framework_TestCase
+{
+    /**
+     * @covers ::globalFunction()
+     */
+    public function testSomething()
+    {
+        globalFunction();
+    }
+}

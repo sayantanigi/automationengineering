@@ -1,7 +1,7 @@
-<?php
-class OverrideTestCase extends OneTestCase
-{
-    public function testCase($arg = '')
-    {
-    }
-}
+<?php
+class OverrideTestCase extends OneTestCase
+{
+    public function testCase($arg = '')
+    {
+    }
+}

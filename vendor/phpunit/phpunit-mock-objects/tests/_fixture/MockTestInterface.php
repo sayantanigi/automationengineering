@@ -1,6 +1,6 @@
-<?php
-interface MockTestInterface
-{
-    public function returnAnything();
-    public function returnAnythingElse();
-}
+<?php
+interface MockTestInterface
+{
+    public function returnAnything();
+    public function returnAnythingElse();
+}

@@ -1,6 +1,6 @@
-/build/coverage
-/composer.lock
-/composer.phar
-/phpunit.xml
-/.idea
-/vendor
+/build/coverage
+/composer.lock
+/composer.phar
+/phpunit.xml
+/.idea
+/vendor

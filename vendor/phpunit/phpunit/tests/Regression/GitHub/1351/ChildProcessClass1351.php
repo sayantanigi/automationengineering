@@ -1,4 +1,4 @@
-<?php
-class ChildProcessClass1351
-{
-}
+<?php
+class ChildProcessClass1351
+{
+}

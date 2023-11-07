@@ -1,4 +1,4 @@
-<?php
-interface TraversableMockTestInterface extends Traversable
-{
-}
+<?php
+interface TraversableMockTestInterface extends Traversable
+{
+}

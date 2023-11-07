@@ -1,12 +1,12 @@
-<?php
-namespace Foo\Bar;
-
-class TestClassInBar
-{
-}
-
-namespace Foo\Baz;
-
-class TestClassInBaz
-{
-}
+<?php
+namespace Foo\Bar;
+
+class TestClassInBar
+{
+}
+
+namespace Foo\Baz;
+
+class TestClassInBaz
+{
+}

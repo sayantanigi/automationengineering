@@ -1,1 +1,1 @@
- CKEDITOR.replace('short_description',{height: 400} );
+ CKEDITOR.replace('short_description',{height: 400} );

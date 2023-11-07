@@ -1,7 +1,7 @@
-<?php
-
-namespace Stripe\Error;
-
-class ApiConnection extends Base
-{
-}
+<?php
+
+namespace Stripe\Error;
+
+class ApiConnection extends Base
+{
+}

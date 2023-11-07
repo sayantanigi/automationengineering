@@ -1,5 +1,5 @@
-<?php
-interface AnInterface
-{
-    public function doSomething();
-}
+<?php
+interface AnInterface
+{
+    public function doSomething();
+}

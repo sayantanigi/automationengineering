@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -44,56 +44,53 @@ class Home extends MY_Controller {
 
 				}
 
-			} else {
-				$return = "";
 			}
+
 			$data['get_post'] = $return;
 
 			$data['countries']=$this->Crud_model->GetData('countries',"","");
+
 			$data['get_freelancerspost'] = $this->Crud_model->GetData('postjob', '', "is_delete='0'", '', '', '8');
+
 			//$data['get_users'] = $this->Users_model->get_users();
+
 			//$data['get_users'] = $this->db->query("SELECT * FROM users WHERE userType = '2'")->result();
+
 			$get_users = $this->db->query("SELECT * FROM users WHERE userType = '1'")->result_array();
+
 			if(!empty($get_users)) {
+
 				foreach ($get_users as $key => $val) {
-					if(!empty($val["profilePic"])) {
-						$val['profilePic'] = base_url().'uploads/users/'.$val['profilePic'];
-						$return[$key] = $val;
-					} else {
-						$return = "";
-					}
+
+					$val['profilePic'] = base_url().'uploads/users/'.$val['profilePic'];;
+
+					$return[$key] = $val;
+
 				}
-			} else {
-				$return = "";
+
 			}
+
 			$data['get_users'] = $return;
 
-			//$get_ourservice = $this->Crud_model->GetData('our_service', '', "status='Active'", '', '', '', '', [['key' => 'icon', 'base' => base_url("uploads/services/")]]);
-			$get_ourservice = $this->db->query('SELECT category.category_name, our_service.description, our_service.icon FROM our_service JOIN category ON category.id = our_service.category_id WHERE our_service.status = "Active"')->result_array();
-			//print_r($get_ourservice); die();
-			/*if(!empty($get_ourservice)) {
-				foreach ($get_ourservice as $key => $val) {
-					$getCatName = $this->Crud_model->get_single('category',"","id='".$val->id."'");
-					$getCatName->category_name;
-					$val->category_id = $getCatName->category_name;
-					$return[$key] = $val;
-				}
-			} else {
-				$return = "";
-			}*/
+			$get_ourservice = $this->Crud_model->GetData('our_service', '', "status='Active'", '', '', '', '', [['key' => 'icon', 'base' => base_url("uploads/services/")]]);
+
 			if(!empty($get_ourservice)) {
-				foreach ($get_ourservice as $key1 => $val1) {
-					if(!empty($val1["icon"])) {
-						$val1['icon'] = base_url().'uploads/services/'.$val1['icon'];
-						$return1[$key1] = $val1;
-					} else {
-						$return1 = "";
-					}
+
+				foreach ($get_ourservice as $key => $val) {
+
+					$getCatName = $this->Crud_model->get_single('category',"","id='".$val->id."'");
+
+					//print_r($getCatName);
+
+					$val->category_id = $getCatName->category_name;
+
+					$return[$key] = $val;
+
 				}
-			} else {
-				$return1 = "";
+
 			}
-			$data['get_ourservice'] = $return1;
+
+			$data['get_ourservice'] = $return;
 
 			$data['get_company'] = $this->Crud_model->GetData('company_logo', '', "status='Active'", '', '', '', '', [['key' => 'logo', 'base' => base_url("uploads/company_logo/")]]);
 
@@ -338,18 +335,14 @@ class Home extends MY_Controller {
 			//$data['userdata'] = $this->Crud_model->get_single('users',"userId='".$userid."'");
 
 			$userdata = $this->db->query('SELECT * FROM users WHERE userId="'.$userid.'"')->result_array();
-			if(!empty($userdata)) {
-				foreach($userdata as $key => $arr) {
 
-					$arr['profilePic'] = base_url().'uploads/users/'.$arr['profilePic'];
-	
-					$return[$key] = $arr;
-	
-				}
-			} else {
-				$return = '';
+			foreach($userdata as $key => $arr) {
+
+				$arr['profilePic'] = base_url().'uploads/users/'.$arr['profilePic'];
+
+				$return[$key] = $arr;
+
 			}
-			
 
 			$data['userdata'] = $return;
 
@@ -357,15 +350,14 @@ class Home extends MY_Controller {
 
 	        $data['count_post'] = $this->db->query("SELECT COUNT(id) as total FROM postjob WHERE user_id='".$userid."' AND is_delete = '0'")->result_array();
 
-			//$prod_list = $this->db->query("SELECT user_product.id, user_product.prod_name, user_product.prod_description, user_product_image.prod_image FROM user_product_image JOIN user_product ON user_product.id = user_product_image.prod_id WHERE user_product.status = 1 AND user_product.is_delete = 1 AND user_id='".$userid."' group by user_product.id")->result_array();
-			$prod_list = $this->db->query("SELECT user_product.id, user_product.prod_name, user_product.prod_description, user_product_image.prod_image FROM user_product_image JOIN user_product ON user_product.id = user_product_image.prod_id WHERE user_product.status = 1 AND user_product.is_delete = 1 AND user_id='".$userid."'")->result_array();
-			if(!empty($prod_list)) {
-				foreach($prod_list as $key => $arr) {
-					$arr['prod_image'] = base_url().'uploads/products/'.$arr['prod_image'];
-					$return[$key] = $arr;
-				}
-			} else {
-				$return = '';
+			$prod_list = $this->db->query("SELECT user_product.id, user_product.prod_name, user_product.prod_description, user_product_image.prod_image FROM user_product_image JOIN user_product ON user_product.id = user_product_image.prod_id WHERE user_product.status = 1 AND user_product.is_delete = 1 AND user_id='".$userid."' group by user_product.id")->result_array();
+
+			foreach($prod_list as $key => $arr) {
+
+				$arr['prod_image'] = base_url().'uploads/products/'.$arr['prod_image'];
+
+				$return[$key] = $arr;
+
 			}
 
 			$data['prod_list'] = $return;
@@ -567,8 +559,9 @@ class Home extends MY_Controller {
 			$data['get_post'] = $this->Crud_model->GetData('postjob','',"user_id='".$userid."' AND is_delete = '0'");
 
 	        $data['count_post'] = $this->db->query("SELECT COUNT(id) as total FROM postjob WHERE user_id='".$userid."' AND is_delete = '0'")->result_array();
-			//$data['prod_list'] = $this->db->query("SELECT user_product.id, user_product.prod_name, user_product.prod_description, user_product_image.prod_image FROM user_product_image JOIN user_product ON user_product.id = user_product_image.prod_id WHERE user_product.status = 1 AND user_product.is_delete = 1 AND user_id='".$userid."' group by user_product.id")->result_array();
-			$data['prod_list'] = $this->db->query("SELECT user_product.id, user_product.prod_name, user_product.prod_description, user_product_image.prod_image FROM user_product JOIN user_product_image ON user_product.id = user_product_image.prod_id WHERE user_product.status = 1 AND user_product.is_delete = 1 AND user_id='".$userid."'")->result_array();
+
+			$data['prod_list'] = $this->db->query("SELECT user_product.id, user_product.prod_name, user_product.prod_description, user_product_image.prod_image FROM user_product_image JOIN user_product ON user_product.id = user_product_image.prod_id WHERE user_product.status = 1 AND user_product.is_delete = 1 AND user_id='".$userid."' group by user_product.id")->result_array();
+
 			$viewcount = $data['userdata'][0]['view_count']+1;
 
 			$insert_data=array(
@@ -897,19 +890,19 @@ class Home extends MY_Controller {
 
 				//Send email via SMTP
 
-				// $mail->IsSMTP();
+				$mail->IsSMTP();
 
-				// $mail->SMTPAuth   = true;
+				$mail->SMTPAuth   = true;
 
-				// $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+				$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 
-				// $mail->Host       = "smtp.gmail.com";
+				$mail->Host       = "smtp.gmail.com";
 
-				// $mail->Port       = 587; //587 465
+				$mail->Port       = 587; //587 465
 
-				// $mail->Username   = "no-reply@goigi.com";
+				$mail->Username   = "no-reply@goigi.com";
 
-				// $mail->Password   = "wj8jeml3eu0z";
+				$mail->Password   = "wj8jeml3eu0z";
 
 				$mail->send();
 
@@ -985,19 +978,19 @@ class Home extends MY_Controller {
 
 				$mail->Body = $message;
 
-				// $mail->IsSMTP();
+				$mail->IsSMTP();
 
-				// $mail->SMTPAuth   = true;
+				$mail->SMTPAuth   = true;
 
-				// $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+				$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 
-				// $mail->Host       = "smtp.gmail.com";
+				$mail->Host       = "smtp.gmail.com";
 
-				// $mail->Port       = 587; //587 465
+				$mail->Port       = 587; //587 465
 
-				// $mail->Username   = "no-reply@goigi.com";
+				$mail->Username   = "no-reply@goigi.com";
 
-				// $mail->Password   = "wj8jeml3eu0z";
+				$mail->Password   = "wj8jeml3eu0z";
 
 				$mail->send();
 

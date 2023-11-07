@@ -1,9 +1,9 @@
-<?php
-namespace Foo\BarScoped {
-
-    class TestClass {
-
-    }
-
-}
-
+<?php
+namespace Foo\BarScoped {
+
+    class TestClass {
+
+    }
+
+}
+

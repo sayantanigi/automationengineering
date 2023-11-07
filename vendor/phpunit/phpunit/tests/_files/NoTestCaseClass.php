@@ -1,4 +1,4 @@
-<?php
-class NoTestCaseClass
-{
-}
+<?php
+class NoTestCaseClass
+{
+}

@@ -1,6 +1,6 @@
-{
-  "id":"STREAMID",
-  "videoType":"camera",
-  "name":"",
-  "layoutClassList":["foo","bar"]
-}
+{
+  "id":"STREAMID",
+  "videoType":"camera",
+  "name":"",
+  "layoutClassList":["foo","bar"]
+}

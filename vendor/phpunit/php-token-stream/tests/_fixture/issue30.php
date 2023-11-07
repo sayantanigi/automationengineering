@@ -1,8 +1,8 @@
-<?php
-class Foo
-{
-    public function bar()
-    {
-        return Foo::CLASS;
-    }
-}
+<?php
+class Foo
+{
+    public function bar()
+    {
+        return Foo::CLASS;
+    }
+}

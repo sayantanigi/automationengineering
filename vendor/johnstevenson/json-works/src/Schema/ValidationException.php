@@ -1,7 +1,7 @@
-<?php
-
-namespace JohnStevenson\JsonWorks\Schema;
-
-class ValidationException extends \Exception
-{
-}
+<?php
+
+namespace JohnStevenson\JsonWorks\Schema;
+
+class ValidationException extends \Exception
+{
+}

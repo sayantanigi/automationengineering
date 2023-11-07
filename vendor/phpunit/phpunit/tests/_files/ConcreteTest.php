@@ -1,7 +1,7 @@
-<?php
-class ConcreteTest extends AbstractTest
-{
-    public function testTwo()
-    {
-    }
-}
+<?php
+class ConcreteTest extends AbstractTest
+{
+    public function testTwo()
+    {
+    }
+}

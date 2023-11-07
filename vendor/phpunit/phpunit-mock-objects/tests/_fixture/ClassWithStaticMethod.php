@@ -1,7 +1,7 @@
-<?php
-class ClassWithStaticMethod
-{
-    public static function staticMethod()
-    {
-    }
-}
+<?php
+class ClassWithStaticMethod
+{
+    public static function staticMethod()
+    {
+    }
+}

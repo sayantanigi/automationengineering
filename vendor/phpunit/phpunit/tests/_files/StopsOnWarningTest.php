@@ -1,7 +1,7 @@
-<?php
-class StopsOnWarningTest extends PHPUnit_Framework_TestCase
-{
-    public function testOne()
-    {
-    }
-}
+<?php
+class StopsOnWarningTest extends PHPUnit_Framework_TestCase
+{
+    public function testOne()
+    {
+    }
+}

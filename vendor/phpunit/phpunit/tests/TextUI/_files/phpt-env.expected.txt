@@ -1,1 +1,1 @@
-string(%d) "%s"
+string(%d) "%s"

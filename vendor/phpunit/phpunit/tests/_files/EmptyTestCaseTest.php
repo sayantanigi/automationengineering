@@ -1,4 +1,4 @@
-<?php
-class EmptyTestCaseTest extends PHPUnit_Framework_TestCase
-{
-}
+<?php
+class EmptyTestCaseTest extends PHPUnit_Framework_TestCase
+{
+}

@@ -1,5 +1,5 @@
-<?php
-
-define('TEST_CONSTANT', true);
-
-?>
+<?php
+
+define('TEST_CONSTANT', true);
+
+?>

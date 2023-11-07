@@ -1,6 +1,6 @@
-<?php
-namespace Foo\Bar;
-
-class TestClass
-{
-}
+<?php
+namespace Foo\Bar;
+
+class TestClass
+{
+}

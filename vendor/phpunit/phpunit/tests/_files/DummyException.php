@@ -1,5 +1,5 @@
-<?php
-
-class DummyException extends Exception
-{
-}
+<?php
+
+class DummyException extends Exception
+{
+}

@@ -1,5 +1,5 @@
-<?php
-interface InterfaceWithSemiReservedMethodName
-{
-    public function unset();
-}
+<?php
+interface InterfaceWithSemiReservedMethodName
+{
+    public function unset();
+}
