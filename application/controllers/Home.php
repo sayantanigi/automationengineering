@@ -1,5 +1,7 @@
 <?php
-error_reporting(0);
+
+
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
@@ -40,7 +42,8 @@ class Home extends MY_Controller {
 
 		$data['get_company'] = $this->Crud_model->GetData('company_logo', '', "status='Active'", '', '', '');
 
-		$data['get_users'] = $this->Users_model->get_users();
+		//$data['get_users'] = $this->Users_model->get_users();
+		$data['get_users'] = $this->db->query("SELECT users.*, employer_subscription.employer_id FROM users JOIN employer_subscription ON employer_subscription.employer_id = users.userId WHERE users.userType = '1' AND users.status = '1' AND users.email_verified = '1' GROUP BY users.userId ORDER BY users.userId DESC")->result_array();
 
 		$data['get_ourservice'] = $this->Crud_model->GetData('our_service', '', "status='Active'", '', '', '');
 

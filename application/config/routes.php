@@ -320,5 +320,5 @@ $route['api/save_employer_rating'] = "api/User_dashboard/save_employer_rating";
 $route['api/chatUser_list'] = "api/User_dashboard/chatUser_list";
 $route['api/showmessage_count'] = "api/User_dashboard/showmessage_count";
 $route['api/showmessageCountEach'] = "api/User_dashboard/showmessageCountEach";
-$route['api/showmessage_list'] = "api/User_dashboard/showmessage_list";
+$route['api/changebiddingstatus'] = "api/User_dashboard/changebiddingstatus";
 //$route['api/home_list'] = 'api/Home/home_list';

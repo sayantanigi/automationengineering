@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+
 
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -586,27 +586,27 @@ class User_dashboard extends CI_Controller {
 
 
 
-					// $mail->SMTPAuth   = true;
+					$mail->SMTPAuth   = true;
 
 
 
-					// $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+					$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 
 
 
-					// $mail->Host       = "smtp.gmail.com";
+					$mail->Host       = "smtp.gmail.com";
 
 
 
-					// $mail->Port       = 587; //587 465
+					$mail->Port       = 587; //587 465
 
 
 
-					// $mail->Username   = "no-reply@goigi.com";
+					$mail->Username   = "no-reply@goigi.com";
 
 
 
-					// $mail->Password   = "wj8jeml3eu0z";
+					$mail->Password   = "wj8jeml3eu0z";
 
 
 
@@ -2873,117 +2873,33 @@ class User_dashboard extends CI_Controller {
 
 
 	public function edit_product() {
-
-
-
 		try{
-
-
-
 			$formdata = json_decode(file_get_contents('php://input'), true);
-
-
-
 			$prod_id = $formdata['id'];
-
-
-
 			//$product_list = $this->Crud_model->GetData('user_product', '', "user_id='".$user_id."' AND status = 1 and is_delete = 1");
-
-
-
 			$product_list = $this->db->query("SELECT * FROM user_product WHERE id='".$prod_id."'")->result_array();
-
-
-
 			if(!empty($product_list)) {
-
-
-
 				$productList = array();
-
-
-
 				foreach ($product_list as $key => $value) {
-
-
-
 					$productList[$key]['id'] = $value['id'];
-
-
-
 					$productList[$key]['user_id'] = $value['user_id'];
-
-
-
 					$productList[$key]['prod_name'] = $value['prod_name'];
-
-
-
 					$productList[$key]['prod_description'] = $value['prod_description'];
-
-
-
 					$productList[$key]['status'] = $value['status'];
-
-
-
 					$productList[$key]['is_delete'] = $value['is_delete'];
-
-
-
 					$pro_Img = $this->db->query("SELECT * FROM user_product_image where prod_id = '".$value['id']."'")->result_array();
-
-
-
 					foreach ($pro_Img as $img) {
-
-
-
-						$productList[$key]['prod_image'][] = $img['prod_image'];
-
-
-
+						$productList[$key]['prod_image']['image'] = base_url().'uploads/products/'.$img['prod_image'];
 					}
-
-
-
 				}
-
-
-
 				$response = array('status'=> 'success', 'result'=> $productList);
-
-
-
 			} else {
-
-
-
 				$response = array('status'=> 'error', 'result'=> 'No data found');
-
-
-
 			}
-
-
-
 		} catch(\Exception $e) {
-
-
-
 			$response = array('status'=> 'error', 'result'=> $e->getMessage());
-
-
-
 		}
-
-
-
 		echo json_encode($response);
-
-
-
 	}
 
 
