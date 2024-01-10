@@ -19,6 +19,8 @@ class Home extends MY_Controller {
 					$arr['user_image'] = base_url() . 'uploads/users/' . $arr['user_image'];
 					$return[$key] = $arr;
 				}
+			} else {
+				$return = [];
 			}
 			$data['get_post'] = $return;
 
@@ -36,6 +38,8 @@ class Home extends MY_Controller {
 					}
 					$return1[$key] = $val;
 				}
+			} else {
+				$return1 = [];
 			}
 			$data['get_users'] = $return1;
 

@@ -1,111 +1,29 @@
 <?php
-
-
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-
-
 //require APPPATH . '/libraries/REST_Controller.php';
-
-
-
 use PHPMailer\PHPMailer\PHPMailer;
-
-
-
 use PHPMailer\PHPMailer\SMTP;
-
-
-
 use PHPMailer\PHPMailer\Exception;
 
-
-
-
-
-
-
 class User_dashboard extends CI_Controller {
-
-
-
-
-
-
-
 	public function __construct() {
-
-
-
-        parent::__construct();
-
-
-
-        $this->load->model('Mymodel');
-
-
-
+		parent::__construct();
+		$this->load->model('Mymodel');
 		$this->load->model('Users_model');
-
-
-
-    }
-
-
-
-
-
-
+   }
 
 	function getVisIpAddr() {
-
-
-
-    	if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-
-
-
-        	return $_SERVER['HTTP_CLIENT_IP'];
-
-
-
-    	} else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-
-
-
-        	return $_SERVER['HTTP_X_FORWARDED_FOR'];
-
-
-
-    	} else {
-
-
-
-        	return $_SERVER['REMOTE_ADDR'];
-
-
-
-    	}
-
-
-
+	   	if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+	       	return $_SERVER['HTTP_CLIENT_IP'];
+	   	} else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+	       	return $_SERVER['HTTP_X_FORWARDED_FOR'];
+	   	} else {
+	       	return $_SERVER['REMOTE_ADDR'];
+	   	}
 	}
 
-
-
-
-
-
-
 	public function subscription_details() {
-
-
-
 		try {
-
-
-
 			$formdata = json_decode(file_get_contents('php://input'), true);
 
 
@@ -2508,135 +2426,36 @@ class User_dashboard extends CI_Controller {
 
 	}
 
-
-
-
-
-
-
 	public function changebiddingstatus() {
-
-
-
 		try{
-
-
-
 			$formdata = json_decode(file_get_contents('php://input'), true);
-
-
-
 			$bidstatus = $formdata['bidstatus'];
-
-
-
 			$jodBidid = $formdata['jodBidid'];
-
-
-
 			$postJobid = $formdata['postJobid'];
-
-
-
 			$jobbiduserid = $formdata['jobbiduserid'];
-
-
-
 			$jobpostuserid = $formdata['jobpostuserid'];
-
-
-
 			$data1 = array('bidding_status' => $bidstatus);
-
-
-
 			$this->Crud_model->SaveData('job_bid', $data1, "id='".$jodBidid."' AND postjob_id='".$postJobid."'");
-
-
-
 			if($bidstatus == "Selected") {
-
-
-
 				$this->Crud_model->SaveData('job_bid', $data1, "id='".$jodBidid."' AND postjob_id='".$postJobid."'");
-
-
-
 				$binddingstatus = $this->Crud_model->GetData('job_bid', '', "postjob_id = '".$postJobid."' and bidding_status IN ('Under Review','Short Listed')");
-
-
-
 				foreach ($binddingstatus as $row) {
-
-
-
 					$data = array('bidding_status' => 'Rejected');
-
-
-
 					$this->Crud_model->SaveData('job_bid', $data, "id='" . $row->id . "'");
-
-
-
 				}
-
-
-
 				$getChatData = $this->db->query("SELECT * FROM chat WHERE userfrom_id != '".$jobbiduserid."' AND userto_id != '".$jobbiduserid."' AND postjob_id = '".$postJobid."'")->result();
-
-
-
 				if(!empty($getChatData)) {
-
-
-
 					$updateChatData = $this->db->query("UPDATE chat SET is_delete = '2' WHERE userfrom_id != '".$jobbiduserid."' AND userto_id != '".$jobbiduserid."' AND postjob_id = '".$postJobid."'");
-
-
-
 				}
-
-
-
 				$updatepost = array('is_delete' => 1);
-
-
-
 				$this->Crud_model->SaveData('postjob', $updatepost, "id='".$postJobid."'");
-
-
-
 				$response = array('status'=> 'success', 'result'=> 'Bid status changed successfully');
-
-
-
 			}
-
-
-
 		} catch(\Exception $e) {
-
-
-
 			$response = array('status'=> 'error', 'result'=> $e->getMessage());
-
-
-
 		}
-
-
-
 		echo json_encode($response);
-
-
-
 	}
-
-
-
-
-
-
 
 	public function products() {
 		try{
@@ -2674,203 +2493,53 @@ class User_dashboard extends CI_Controller {
 		echo json_encode($response);
 	}
 
-
-
-
-
-
-
 	public function add_product() {
-
-
-
 		try{
-
-
-
 			if(!empty($this->input->post())){
-
-
-
 				$data = array(
-
-
-
 					'user_id' => $this->input->post('user_id'),
-
-
-
 					'prod_name' => $this->input->post('prod_name'),
-
-
-
 					'prod_description' => $this->input->post('prod_description'),
-
-
-
 					'created_date' => date("Y-m-d H:i:s"),
-
-
-
 				);
-
-
-
 				$this->Crud_model->SaveData('user_product', $data);
-
-
-
 				$insert_id = $this->db->insert_id();
-
-
-
 				if(!empty($insert_id)) {
-
-
-
 					if ($_FILES['prod_image']['name'] != '') {
-
-
-
 						$cpt = count($_FILES['prod_image']['name']);
-
-
-
 						for($i=0; $i<$cpt; $i++) {
-
-
-
 							$_POST['prod_image'] = rand(0000, 9999) . "_" . $_FILES['prod_image']['name'][$i];
-
-
-
 							$config2['image_library'] = 'gd2';
-
-
-
 							$config2['source_image'] =  $_FILES['prod_image']['tmp_name'][$i];
-
-
-
 							$config2['new_image'] =   getcwd() . '/uploads/products/'.$_POST['prod_image'];
-
-
-
 							$config2['upload_path'] =  getcwd() . '/uploads/products/';
-
-
-
 							$config2['allowed_types'] = 'jpg|png|jpeg|PNG|JPEG';
-
-
-
 							$config2['maintain_ratio'] = TRUE;
-
-
-
 							$this->load->library('image_lib', $config2);
-
-
-
 							$this->image_lib->initialize($config2);
-
-
-
 							if (!$this->image_lib->resize()) {
-
-
-
 								$response = array('status'=> 'error', 'result'=> $this->image_lib->display_errors());
-
-
-
 								exit;
-
-
-
 							} else {
-
-
-
 								$image = $_POST['prod_image'];
-
-
-
 								@unlink('uploads/products/' . $_POST['old_image']);
-
-
-
 							}
-
-
-
 							$data_image = array(
-
-
-
 								'prod_id' => $insert_id,
-
-
-
 								'prod_image' => $image,
-
-
-
-								'created_date' => date("Y-m-d H:i:s"),
-
-
-
+								'created_date' => date("Y-m-d H:i:s")
 							);
-
-
-
 							$this->Crud_model->SaveData('user_product_image', $data_image);
-
-
-
 							$response = array('status'=> 'success', 'result'=> 'Product Created Successfully !');
-
-
-
 						}
-
-
-
 					}
-
-
-
 				}
-
-
-
 			}
-
-
-
 		} catch(\Exception $e) {
-
-
-
 			$response = array('status'=> 'error', 'result'=> $e->getMessage());
-
-
-
 		}
-
-
-
 		echo json_encode($response);
-
-
-
 	}
-
-
-
-
-
-
 
 	public function edit_product() {
 		try{
@@ -2902,885 +2571,280 @@ class User_dashboard extends CI_Controller {
 		echo json_encode($response);
 	}
 
-
-
-
-
-
-
 	public function update_product() {
-
-
-
 		try{
-
-
-
 			$formdata = json_decode(file_get_contents('php://input'), true);
-
-
-
 			if(!empty($formdata)){
-
-
-
 				$data = array(
-
-
-
 					'prod_name' => $formdata['prod_name'],
-
-
-
 					'prod_description' => $formdata['prod_description'],
-
-
-
 					'id' =>  $formdata['id']
-
-
-
 				);
-
-
-
 				$updateQuery = $this->Crud_model->SaveData('user_product', $data, "id='".$id."'");
-
-
-
 				if (!empty($_FILES['prod_image']['name'][0])) {
-
-
-
 					$cpt = count($_FILES['prod_image']['name']);
-
-
-
 					for($i=0; $i<$cpt; $i++) {
-
-
-
 						$_POST['prod_image'] = rand(0000, 9999) . "_" . $_FILES['prod_image']['name'][$i];
-
-
-
 						$config2['image_library'] = 'gd2';
-
-
-
 						$config2['source_image'] =  $_FILES['prod_image']['tmp_name'][$i];
-
-
-
 						$config2['new_image'] =   getcwd() . '/uploads/products/'.$_POST['prod_image'];
-
-
-
 						$config2['upload_path'] =  getcwd() . '/uploads/products/';
-
-
-
 						$config2['allowed_types'] = 'JPG|PNG|JPEG|jpg|png|jpeg';
-
-
-
 						$config2['maintain_ratio'] = FALSE;
-
-
-
 						$this->image_lib->initialize($config2);
-
-
-
 						if (!$this->image_lib->resize()) {
-
-
-
 							$this->image_lib->display_errors();
-
-
-
 							$response = array('status'=> 'error', 'result'=> $this->image_lib->display_errors());
-
-
-
 							exit;
-
-
-
 						} else {
-
-
-
 							$image  = $_POST['prod_image'];
-
-
-
 							@unlink('uploads/products/' . $_POST['old_image']);
-
-
-
 						}
-
-
-
 						$data_image = array(
-
-
-
 							'prod_id' => $_POST['id'],
-
-
-
 							'prod_image' => $image,
-
-
-
-							'created_date' => date("Y-m-d H:i:s"),
-
-
-
+							'created_date' => date("Y-m-d H:i:s")
 						);
-
-
-
 						$this->Crud_model->SaveData('user_product_image', $data_image);
-
-
-
 						$response = array('status'=> 'success', 'result'=> 'Product Updated Successfully !');
-
-
-
 					}
-
-
-
 				}
-
-
-
 			}
-
-
-
 			$response = array('status'=> 'success', 'result'=> 'Product Updated Successfully !');
-
-
-
 		} catch(\Exception $e) {
-
-
-
 			$response = array('status'=> 'error', 'result'=> $e->getMessage());
-
-
-
 		}
-
-
-
 		echo json_encode($response);
-
-
-
 	}
-
-
-
-
-
-
 
 	public function delete_product() {
-
-
-
 		try{
-
-
-
 			$formdata = json_decode(file_get_contents('php://input'), true);
-
-
-
 			$p_id = $formdata['id'];
-
-
-
 			$delete_prod = $this->db->query("UPDATE user_product SET is_delete = '2' WHERE id = '$p_id'");
-
-
-
 			if($delete_prod > 0){
-
-
-
 				$response = array('status'=> 'success', 'result'=> 'Product Deleted Successfully');
-
-
-
 			} else {
-
-
-
 				$response = array('status'=> 'error', 'result'=> 'Oops! Something went wrong Please try again later.');
-
-
-
 			}
-
-
-
 		} catch(\Exception $e) {
-
-
-
 			$response = array('status'=> 'error', 'result'=> $e->getMessage());
-
-
-
 		}
-
-
-
 		echo json_encode($response);
-
-
-
 	}
-
-
-
-
-
-
 
 	public function delete_product_image() {
-
-
-
 		try {
-
-
-
 			$formdata = json_decode(file_get_contents('php://input'), true);
-
-
-
 			$pi_id = $this->input->post('id');
-
-
-
 			$delete_prod = $this->db->query("DELETE FROM user_product_image WHERE id = '$pi_id'");
-
-
-
 			if($delete_prod > 0){
-
-
-
 				$response = array('status'=> 'success', 'result'=> 'Product image deleted');
-
-
-
 			} else {
-
-
-
 				$response = array('status'=> 'error', 'result'=> 'Oops! Something went wrong Please try again later.');
-
-
-
 			}
-
-
-
 		} catch (\Exception $e) {
-
-
-
 			$response = array('status'=> 'error', 'result'=> $e->getMessage());
-
-
-
 		}
-
-
-
 		echo json_encode($response);
-
-
-
 	}
-
-
-
-
-
-
 
 	public function save_employer_rating() {
-
-
-
 		try {
-
-
-
 			$formdata = json_decode(file_get_contents('php://input'), true);
-
-
-
 			$data = array(
-
-
-
 				'employer_id' => $formdata["employer_id"],
-
-
-
 				'worker_id' => $formdata["worker_id"],
-
-
-
 				'rating' => $formdata["rating"],
-
-
-
 				'subject' => $formdata["subject"],
-
-
-
 				'review' => $formdata["review"],
-
-
-
-				'created_date' => date('Y-m-d H:i:s'),
-
-
-
+				'created_date' => date('Y-m-d H:i:s')
 			);
-
-
-
 			$this->Crud_model->SaveData('employer_rating', $data);
-
-
-
 			$response = array('status'=> 'success','result'=> 'Rating successfully');
-
-
-
 		} catch (\Exception $e) {
-
-
-
 			$response = array('status'=> 'error','result'=> $e->getMessage());
-
-
-
 		}
-
-
-
 		echo json_encode($response);
-
-
-
 	}
 
-
-
-
-
-
+	/*public function chatUser_list() {
+		try {
+			$formdata = json_decode(file_get_contents('php://input'), true);
+			$userId = $formdata['user_id'];
+			//$data['get_user'] = $this->Crud_model->get_single('users', "userId ='".$userId."'");
+			$get_user = $this->db->query("SELECT * FROM users WHERE userId ='".$userId."'")->result_array();
+			foreach($get_user as $key => $arr) {
+				$arr['profilePic'] = base_url().'uploads/users/'.$arr['profilePic'];
+				$return[$key] = $arr;
+			}
+			$data['get_user'] = $return;
+			$cond = "job_bid.bidding_status IN ('Short Listed','Selected')";
+			$get_jobbid = $this->Users_model->get_jobbidding($cond);
+			foreach($get_jobbid as $key => $arr) {
+				$arr->profilePic = base_url().'uploads/users/'.$arr->profilePic;
+				$return[$key] = $arr;
+			}
+			$data['get_userlistbbyjobbid'] = $return;
+			$response = array('status'=> 'success', 'result'=> $data);
+		} catch (\Exception $e) {
+			$response = array('status'=> 'error', 'result'=> $e->getMessage());
+		}
+		echo json_encode($response);
+	}*/
 
 	public function chatUser_list() {
-
-
-
 		try {
-
-
-
 			$formdata = json_decode(file_get_contents('php://input'), true);
-
-
-
 			$userId = $formdata['user_id'];
-
-
-
-			//$data['get_user'] = $this->Crud_model->get_single('users', "userId ='".$userId."'");
-
-
-
 			$get_user = $this->db->query("SELECT * FROM users WHERE userId ='".$userId."'")->result_array();
-
-
-
 			foreach($get_user as $key => $arr) {
-
-
-
-				$arr['profilePic'] = base_url().'uploads/users/'.$arr['profilePic'];
-
-
-
+				if(!empty($arr->profilePic)) {
+					$arr['profilePic'] = base_url().'uploads/users/'.$arr['profilePic'];
+				} else {
+					$arr['profilePic'] = base_url().'uploads/users/user.png';
+				}
 				$return[$key] = $arr;
-
-
-
 			}
-
-
-
 			$data['get_user'] = $return;
-
-
-
-			$cond = "job_bid.bidding_status IN ('Short Listed','Selected')";
-
-
-
-			$get_jobbid = $this->Users_model->get_jobbidding($cond);
-
-
-
-			foreach($get_jobbid as $key => $arr) {
-
-
-
-				$arr->profilePic = base_url().'uploads/users/'.$arr->profilePic;
-
-
-
-				$return[$key] = $arr;
-
-
-
+			if($data['get_user'][0]['userType'] == '1') {
+				//echo "test";
+				$get_jobbid = $this->db->query("SELECT postjob.id as post_id, postjob.user_id as post_user_id, postjob.post_title, job_bid.id as bid_id, job_bid.user_id as bid_user_id, users.userId as userId, users.username, CONCAT(users.firstname, ' ', users.lastname) as full_name, users.profilePic FROM job_bid LEFT JOIN postjob ON postjob.id=job_bid.postjob_id LEFT JOIN users ON users.userId=postjob.user_id WHERE job_bid.user_id ='".$userId."' AND job_bid.bidding_status IN ('Short Listed','Selected')")->result_array();
+			} else {
+				//echo "test1";
+				$get_jobbid = $this->db->query("SELECT postjob.id as post_id, postjob.user_id as post_user_id, postjob.post_title, job_bid.id as bid_id, job_bid.user_id as bid_user_id, users.userId as userId, users.username, CONCAT(users.firstname, ' ', users.lastname) as full_name, users.profilePic FROM job_bid LEFT JOIN postjob ON postjob.id=job_bid.postjob_id LEFT JOIN users ON users.userId=job_bid.user_id WHERE postjob.user_id ='".$userId."' AND job_bid.bidding_status IN ('Short Listed','Selected')")->result_array();
 			}
-
-
-
-			$data['get_userlistbbyjobbid'] = $return;
-
-
-
+			//$get_jobbid = $this->Users_model->get_jobbiddingAPI($cond);
+			$getjobbid = array();
+			if($data['get_user'][0]['userType'] == '1') {
+				foreach($get_jobbid as $key => $arr) {
+					$getjobbid[$key]['userid'] = $arr['userId'];
+					$getjobbid[$key]['full_name'] = $arr['full_name'];
+					if(!empty($arr['profilePic'])) {
+						$getjobbid[$key]['profilePic'] = base_url().'uploads/users/'.$arr['profilePic'];
+					} else {
+						$getjobbid[$key]['profilePic'] = base_url().'uploads/users/user.png';
+					}
+					$getjobbid[$key]['post_id'] = $arr['post_id'];
+					$getjobbid[$key]['post_title'] = $arr['post_title'];
+					//$return[$key] = $getjobbid;
+				}
+			} else {
+				foreach($get_jobbid as $key => $arr) {
+					$getjobbid[$key]['userid'] = $arr['userId'];
+					$getjobbid[$key]['full_name'] = $arr['full_name'];
+					if(!empty($arr['profilePic'])) {
+						$getjobbid[$key]['profilePic'] = base_url().'uploads/users/'.$arr['profilePic'];
+					} else {
+						$getjobbid[$key]['profilePic'] = base_url().'uploads/users/user.png';
+					}
+					$getjobbid[$key]['post_id'] = $arr['post_id'];
+					$getjobbid[$key]['post_title'] = $arr['post_title'];
+					//$return[$key] = $getjobbid;
+				}
+			}
+			$data['get_userlistbbyjobbid'] = $getjobbid;
 			$response = array('status'=> 'success', 'result'=> $data);
-
-
-
 		} catch (\Exception $e) {
-
-
-
 			$response = array('status'=> 'error', 'result'=> $e->getMessage());
-
-
-
 		}
-
-
-
 		echo json_encode($response);
-
-
-
 	}
-
-
-
-	
-
-
 
 	public function sent_message() {
-
-
-
 	    try {
-
-
-
 			$formdata = json_decode(file_get_contents('php://input'), true);
-
-
-
     		$userfromid = $formdata['userfromid'];
-
-
-
     		$usertoid = $formdata['usertoid'];
-
-
-
     		$postjob_id = $formdata['postjob_id'];
-
-
-
     		$message = $formdata['message'];
-
-
-
     		$updatastatus = $this->db->query("UPDATE chat SET status = '1' WHERE (userfrom_id ='".$usertoid."' AND userto_id ='".$userfromid."') OR (userto_id ='".$usertoid."' AND userfrom_id ='".$userfromid."')");
-
-
-
     		if (!empty($usertoid)) {
-
-
-
-    			$data = array(
-
-
-
+   				$data = array(
     				'userfrom_id' => $userfromid,
-
-
-
     				'userto_id' => $usertoid,
-
-
-
     				'postjob_id' => $postjob_id,
-
-
-
     				'message' => $message,
-
-
-
-    				'created_date' => date('Y-m-d H:i:s'),
-
-
-
+    				'created_date' => date('Y-m-d H:i:s')
     			);
-
-
-
     			$this->db->insert('chat', $data);
-
-
-
     			$lastid = $this->db->insert_id();
-
-
-
     			$con = "id='" . $lastid . "'";
-
-
-
     			$getdata = $this->Users_model->getmessage($con);
-
-
-
     			if (@$getdata->profilePic && file_exists('uploads/users/' . @$getdata->profilePic)) {
-
-
-
     				$from_pic = '<img src="' . base_url('uploads/users/' . @$getdata->profilePic) . '" alt="" />';
-
-
-
     			} else {
-
-
-
     				$from_pic = '<img src="' . base_url('uploads/users/user.png') . '" alt="" />';
-
-
-
     			}
-
-
-
     			$response = array('status'=> 'success', 'result'=> 'Message Sent');
-
-
-
     		}
-
-
-
 	    } catch (\Exception $e) {
-
-
-
 			$response = array('status'=> 'error', 'result'=> $e->getMessage());
-
-
-
 		}
-
-
-
 		echo json_encode($response);
-
-
-
 	}
-
-
-
-
-
-
 
 	public function showmessage_count() {
-
-
-
 		try {
-
-
-
 			$formdata = json_decode(file_get_contents('php://input'), true);
-
-
-
 			$user_id = $formdata['user_id'];
-
-
-
 			$getUserType = $this->db->query("Select * FROM users WHERE userId ='".$user_id."'")->result();
-
-
-
 			$uType = $getUserType[0]->userType;
-
-
-
 			$countMessage = $this->db->query("Select COUNT(id) as msgcount, userfrom_id, userto_id FROM chat WHERE userto_id ='".$user_id."' AND status = '0'")->result();
-
-
-
 			$data = array(
-
-
-
 				'userfrom_id' => $countMessage[0]->userfrom_id,
-
-
-
 				'userto_id' => $countMessage[0]->userto_id,
-
-
-
-				'count' => $countMessage[0]->msgcount,
-
-
-
+				'count' => $countMessage[0]->msgcount
 			);
-
-
-
 			$response = array('status'=> 'success', 'result'=> $data);
-
-
-
 		} catch (\Exception $e) {
-
-
-
 			$response = array('status'=> 'error', 'result'=> $e->getMessage());
-
-
-
 		}
-
-
-
 		echo json_encode($response);
-
-
-
 	}
-
-
-
-
-
-
 
 	public function showmessageCountEach() {
-
-
-
 		try {
-
-
-
 			$formdata = json_decode(file_get_contents('php://input'), true);
-
-
-
 			$userfromid = $this->input->post('userfromid');
-
-
-
 			$usertoid = $this->input->post('usertoid');
-
-
-
 			$postid = $this->input->post('postid');
-
-
-
 			$getEachChatCount = $this->db->query("Select COUNT(id) as msgcount, userfrom_id, userto_id, postjob_id FROM chat WHERE userto_id ='".$userfromid."' AND postjob_id ='".$postid."' AND status = '0'")->result();
-
-
-
 			$data = array(
-
-
-
 				'userfrom_id' => $getEachChatCount[0]->userfrom_id,
-
-
-
 				'userto_id' => $getEachChatCount[0]->userto_id,
-
-
-
-				'count' => $getEachChatCount[0]->msgcount,
-
-
-
+				'count' => $getEachChatCount[0]->msgcount
 			);
-
-
-
 			$response = array('status'=> 'success', 'result'=> $data);
-
-
-
 		} catch (\Exception $e) {
-
-
-
 			$response = array('status'=> 'error', 'result'=> $e->getMessage());
-
-
-
 		}
-
-
-
 		echo json_encode($response);
-
-
-
 	}
-
-
-
-
-
-
 
 	public function showmessage_list() {
-
-
-
 		try {
-
-
-
 			$formdata = json_decode(file_get_contents('php://input'), true);
-
-
-
 			$userf_id = $formdata['userf_id'];
-
-
-
 			$usert_id = $formdata['usert_id'];
-
-
-
 			$post_id = $formdata['post_id'];
-
-
-
 			//$get_data = $this->Users_model->getChat();
-
-
-
 			$get_data = $this->db->query("SELECT chat.*, users.username, CONCAT(users.firstname,'',users.lastname) as full_name, users.profilePic, to_user.username as to_username, CONCAT(to_user.firstname,'', to_user.lastname) as to_fullname FROM chat JOIN users ON users.userId = chat.userfrom_id JOIN users as to_user ON to_user.userId = chat.userto_id WHERE (userfrom_id ='".$usert_id."' OR userto_id ='".$usert_id."') AND postjob_id ='".$post_id."'")->result_array();
-
-
-
 			$updatastatus = $this->db->query("UPDATE chat SET status = '1' WHERE (userfrom_id ='".$usert_id."' AND userto_id ='".$userf_id."') OR (userto_id ='".$userf_id."' AND userfrom_id ='".$usert_id."')");
-
-
-
 			$get_chatuser = $this->Crud_model->get_single('users', "userId='".$usert_id."'");
-
-
-
 			if(!empty($get_data)){
-
-
-
 				foreach ($get_data as $key => $arr) {
-
-
-
 					$arr['profilePic'] = base_url().'uploads/users/'.$arr['profilePic'];
-
-
-
 					$return[$key] = $arr;
-
-
-
 				}
-
-
-
 				$get_data = $return;
-
-
-
 				$response = array('status'=> 'success', 'result'=> $get_data);
-
-
-
 			} else {
-
-
-
 				$response = array('status'=> 'error', 'result'=> 'No Message');
-
-
-
 			}
-
-
-
 		} catch (\Exception $e) {
-
-
-
 			$response = array('status'=> 'error', 'result'=> $e->getMessage());
-
-
-
 		}
-
-
-
 		echo json_encode($response);
-
-
-
 	}
-
-
-
 }
-
-
-
