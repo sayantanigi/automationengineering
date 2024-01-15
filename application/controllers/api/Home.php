@@ -16,7 +16,11 @@ class Home extends MY_Controller {
 			$get_post = $this->db->query("SELECT postjob.id,postjob.post_title,postjob.description,postjob.user_id, users.companyname as company_name, users.profilePic as user_image FROM postjob JOIN users ON postjob.user_id = users.userId WHERE postjob.is_delete = '0' ORDER BY postjob.id DESC LIMIT 0,6")->result_array();
 			if (!empty($get_post)) {
 				foreach ($get_post as $key => $arr) {
-					$arr['user_image'] = base_url() . 'uploads/users/' . $arr['user_image'];
+					if (!empty($val['profilePic'])) {
+						$arr['user_image'] = base_url() . 'uploads/users/' . $arr['user_image'];
+					} else {
+						$val['user_image'] = base_url() . 'uploads/no_image.png';
+					}
 					$return[$key] = $arr;
 				}
 			} else {
@@ -90,7 +94,11 @@ class Home extends MY_Controller {
 			//$data['get_career'] = $this->Crud_model->get_single('career_tips', "id='".$careertip_id."'");
 			$get_career = $this->db->query("SELECT * FROM career_tips WHERE id='".$careertip_id."'")->result_array();
 			foreach($get_career as $key => $arr) {
-				$arr['image'] = base_url().'uploads/users/'.$arr['image'];
+				if (!empty($arr['image'])) {
+					$arr['image'] = base_url().'uploads/career/'.$arr['image'];
+				} else {
+					$arr['profilePic'] = base_url() . 'uploads/no_image.png';
+				}
 				$return[$key] = $arr;
 			}
 			$data['get_career'] = $return;

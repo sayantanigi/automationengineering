@@ -2122,307 +2122,80 @@ class User_dashboard extends CI_Controller {
 
 	}
 
-
-
-	
-
-
-
 	public function edit_post_job() {
-
-
-
 		try{
-
-
-
 			$formdata = json_decode(file_get_contents('php://input'), true);
-
-
-
 			$postid = $formdata['post_id'];
-
-
-
 			$update_data = $this->Crud_model->get_single('postjob', "id='".$postid."'");
-
-
-
 			if(!empty($update_data)) {
-
-
-
 				$data = array(
-
-
-
 					'post_title' => $update_data->post_title,
-
-
-
 					'description' => $update_data->description,
-
-
-
 					//'duration' => $update_data->duration,
-
-
-
 					'key_skills' => $update_data->required_key_skills,
-
-
-
 					'duration' => $update_data->duration,
-
-
-
 					'charges' => $update_data->charges,
-
-
-
 					'currency' => $update_data->currency,
-
-
-
 					'category' => $update_data->category_id,
-
-
-
 					'subcategory' => $update_data->subcategory_id,
-
-
-
 					'appli_deadeline' => $update_data->appli_deadeline,
-
-
-
 					'countries' => $update_data->country,
-
-
-
 					'state' => $update_data->state,
-
-
-
 					'cities' => $update_data->city,
-
-
-
 					'location' => $update_data->location,
-
-
-
 					'latitude' => $update_data->latitude,
-
-
-
 					'longitude' => $update_data->longitude,
-
-
-
 					'id' => $postid,
-
-
-
 				);
-
-
-
 				$response = array('status'=> 'success', 'result'=> $data);
-
-
-
 			} else {
-
-
-
 				$response = array('status'=> 'error', 'result'=> 'No data found');
-
-
-
 			}
-
-
-
 		} catch(\Exception $e) {
-
-
-
 			$response = array('status'=> 'error', 'result'=> $e->getMessage());
-
-
-
 		}
-
-
-
 		echo json_encode($response);
-
-
-
 	}
 
-
-
-
-
-
-
 	public function update_post_job() {
-
-
-
 		try{
-
-
-
 			$formdata = json_decode(file_get_contents('php://input'), true);
-
-
-
 			$key_skills = $formdata['key_skills'];
-
-
-
 			for ($i=0; $i < count($key_skills); $i++) {
-
-
-
 			 	$get_specialist = $this->db->query("SELECT * FROM specialist WHERE specialist_name = '".$key_skills[$i]."'")->result();
-
-
-
 			 	if(empty($get_specialist)) {
-
-
-
 			 		$insrt = array(
-
-
-
 			 			'specialist_name'=>ucfirst($key_skills[$i]),
-
-
-
 			 			'created_date'=>date('Y-m-d H:i:s'),
-
-
-
 			 		);
-
-
-
 			 		$this->db->insert('specialist',$insrt);
-
-
-
 			 	}
-
-
-
 			}
-
-
-
 			$data=array(
-
-
-
 				'id'=> $formdata['id'],
-
-
-
 				'post_title'=> $formdata['post_title'],
-
-
-
 				'description'=> $formdata['description'],
-
-
-
 				'required_key_skills'=> implode(", ",$formdata['key_skills']),
-
-
-
 				'duration'=> $formdata['duration'],
-
-
-
 				'currency'=> $formdata['currency'],
-
-
-
 				'charges'=> $formdata['charges'],
-
-
-
 				'category_id'=> $formdata['category_id'],
-
-
-
 				'subcategory_id'=> $formdata['subcategory_id'],
-
-
-
 				'appli_deadeline'=> $formdata['appli_deadeline'],
-
-
-
 				'country'=> $formdata['country'],
-
-
-
 				'state'=> $formdata['state'],
-
-
-
 				'city'=> $formdata['city'],
-
-
-
 				'location'=> $formdata['location'],
-
-
-
 				'latitude'=> $formdata['latitude'],
-
-
-
 				'longitude'=> $formdata['longitude'],
-
-
-
 				'created_date'=>date('Y-m-d H:i:s'),
-
-
-
 			);
-
-
-
 			$this->Crud_model->SaveData('postjob', $data, "id='".$formdata['id']."'");
-
-
-
 			$response = array('status'=> 'success', 'result'=> 'Post Job Updated Successfully !');
-
-
-
 		} catch(\Exception $e) {
-
-
-
 			$response = array('status'=> 'error', 'result'=> $e->getMessage());
-
-
-
 		}
-
-
-
 		echo json_encode($response);
-
-
 
 	}
 
@@ -2699,7 +2472,7 @@ class User_dashboard extends CI_Controller {
 			$userId = $formdata['user_id'];
 			$get_user = $this->db->query("SELECT * FROM users WHERE userId ='".$userId."'")->result_array();
 			foreach($get_user as $key => $arr) {
-				if(!empty($arr->profilePic)) {
+				if(!empty($arr['profilePic'])) {
 					$arr['profilePic'] = base_url().'uploads/users/'.$arr['profilePic'];
 				} else {
 					$arr['profilePic'] = base_url().'uploads/users/user.png';
@@ -2834,7 +2607,12 @@ class User_dashboard extends CI_Controller {
 			$get_chatuser = $this->Crud_model->get_single('users', "userId='".$usert_id."'");
 			if(!empty($get_data)){
 				foreach ($get_data as $key => $arr) {
-					$arr['profilePic'] = base_url().'uploads/users/'.$arr['profilePic'];
+					if(!empty($arr['profilePic'])) {
+						$arr['profilePic'] = base_url().'uploads/users/'.$arr['profilePic'];
+					} else {
+						$arr['profilePic'] = base_url().'uploads/users/user.png';
+					}
+					
 					$return[$key] = $arr;
 				}
 				$get_data = $return;
@@ -2843,6 +2621,32 @@ class User_dashboard extends CI_Controller {
 				$response = array('status'=> 'error', 'result'=> 'No Message');
 			}
 		} catch (\Exception $e) {
+			$response = array('status'=> 'error', 'result'=> $e->getMessage());
+		}
+		echo json_encode($response);
+	}
+
+	public function reset_password() {
+		try {
+			$formdata = json_decode(file_get_contents('php://input'), true);
+			$u_id = $formdata['userId'];
+			$old_pass = md5($formdata['old_password']);
+			$new_pass = md5($formdata['new_password']);
+			$con_pass = md5($formdata['con_password']);
+			$getCurrentPass = $this->db->query("SELECT * FROM users WHERE userId = '".$u_id."'")->result_array();
+			//print_r($getCurrentPass); die();
+			$current_pass = $getCurrentPass[0]['password'];
+			if($old_pass === $current_pass) {
+				if($new_pass === $con_pass) {
+					$this->db->query("UPDATE users SET password = '".$new_pass."' WHERE userId = '".$u_id."'");
+					$response = array('status'=> 'success', 'result'=> 'Password Updated Successfully');
+				} else {
+					$response = array('status'=> 'error', 'result'=> 'Password Mismatch');
+				}
+			} else {
+				$response = array('status'=> 'error', 'result'=> 'Incorrect Old Password');
+			}
+		} catch (Exception $e) {
 			$response = array('status'=> 'error', 'result'=> $e->getMessage());
 		}
 		echo json_encode($response);
