@@ -4,7 +4,7 @@
 		"name": "Automation Engineering",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "28322663",
-		"_collection_link": "https://winter-station-333675.postman.co/workspace/New-Team-Workspace~f2f7af83-fa66-437e-aae8-72df8fdd5d4f/collection/28322663-8740330e-8f65-42fd-819a-83ac25ad906d?action=share&source=collection_link&creator=28322663"
+		"_collection_link": "https://winter-station-333675.postman.co/workspace/IGI~f2f7af83-fa66-437e-aae8-72df8fdd5d4f/collection/28322663-8740330e-8f65-42fd-819a-83ac25ad906d?action=share&source=collection_link&creator=28322663"
 	},
 	"item": [
 		{
@@ -20,135 +20,17 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/home/home_list",
+					"raw": "https://techg.igiapp.com/automationengineering/api/home_list",
 					"protocol": "https",
 					"host": [
-						"dev",
+						"techg",
 						"igiapp",
 						"com"
 					],
 					"path": [
 						"automationengineering",
 						"api",
-						"home",
 						"home_list"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Business List",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/business_lists",
-					"protocol": "https",
-					"host": [
-						"dev",
-						"igiapp",
-						"com"
-					],
-					"path": [
-						"automationengineering",
-						"api",
-						"business_lists"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Business Detail",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"user_id\": \"4\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/business_details",
-					"protocol": "https",
-					"host": [
-						"dev",
-						"igiapp",
-						"com"
-					],
-					"path": [
-						"automationengineering",
-						"api",
-						"business_details"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Product Details",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"prod_id\": \"1\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/product_details",
-					"protocol": "https",
-					"host": [
-						"dev",
-						"igiapp",
-						"com"
-					],
-					"path": [
-						"automationengineering",
-						"api",
-						"product_details"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Experts List",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/expert_lists",
-					"protocol": "https",
-					"host": [
-						"dev",
-						"igiapp",
-						"com"
-					],
-					"path": [
-						"automationengineering",
-						"api",
-						"expert_lists"
 					]
 				}
 			},
@@ -169,17 +51,132 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/expert_details",
+					"raw": "https://www.automationengineering.services/api/expert_details",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"expert_details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Business List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://www.automationengineering.services/api/vendor_lists",
+					"protocol": "https",
+					"host": [
+						"www",
+						"automationengineering",
+						"services"
+					],
+					"path": [
+						"api",
+						"vendor_lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Business Detail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": \"4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.automationengineering.services/api/vendor_detail",
+					"protocol": "https",
+					"host": [
+						"www",
+						"automationengineering",
+						"services"
+					],
+					"path": [
+						"api",
+						"vendor_detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product Details",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"prod_id\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.automationengineering.services/api/product_details",
+					"protocol": "https",
+					"host": [
+						"www",
+						"automationengineering",
+						"services"
+					],
+					"path": [
+						"api",
+						"product_details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Experts List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://www.automationengineering.services/api/expert_lists",
+					"protocol": "https",
+					"host": [
+						"www",
+						"automationengineering",
+						"services"
+					],
+					"path": [
+						"api",
+						"expert_lists"
 					]
 				}
 			},
@@ -206,7 +203,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"post_id\": \"1\"\r\n}",
+					"raw": "{\r\n    \"post_id\": \"4\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -214,15 +211,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/post_details",
+					"raw": "https://www.automationengineering.services/api/post_details",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"post_details"
 					]
@@ -245,10 +241,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/business_pricing",
-					"protocol": "https",
+					"raw": "techg.igiapp.com/automationengineering/api/business_pricing",
 					"host": [
-						"dev",
+						"techg",
 						"igiapp",
 						"com"
 					],
@@ -276,10 +271,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/expert_pricing",
-					"protocol": "https",
+					"raw": "techg.igiapp.com/automationengineering/api/expert_pricing",
 					"host": [
-						"dev",
+						"techg",
 						"igiapp",
 						"com"
 					],
@@ -298,10 +292,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/about",
+					"raw": "https://techg.igiapp.com/automationengineering/api/about",
 					"protocol": "https",
 					"host": [
-						"dev",
+						"techg",
 						"igiapp",
 						"com"
 					],
@@ -320,15 +314,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/contact",
+					"raw": "https://www.automationengineering.services/api/contact",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"contact"
 					]
@@ -351,16 +344,16 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/product_contact",
+					"raw": "https://www.automationengineering.services/api/Home/product_contact",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
+						"Home",
 						"product_contact"
 					]
 				}
@@ -382,15 +375,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/save_contact",
+					"raw": "https://www.automationengineering.services/api/save_contact",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"save_contact"
 					]
@@ -404,15 +396,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/privacy",
+					"raw": "https://www.automationengineering.services/api/privacy",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"privacy"
 					]
@@ -426,17 +417,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/privacy",
+					"raw": "https://www.automationengineering.services/api/home/term_and_conditions",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
-						"privacy"
+						"home",
+						"term_and_conditions"
 					]
 				}
 			},
@@ -457,15 +448,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/careertips_details",
+					"raw": "https://www.automationengineering.services/api/careertips_details",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"careertips_details"
 					]
@@ -480,7 +470,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"category_id\": \"\",\r\n    \"title_keyword\": \"\",\r\n    \"post_id\": \"\",\r\n    \"days\": \"\",\r\n    \"subcategory_id\": \"\",\r\n    \"location\": \"\",\r\n    \"country\": \"\",\r\n    \"state\": \"\",\r\n    \"city\": \"\",\r\n    \"search_title\": \"\",\r\n    \"search_location\": \"\",\r\n}",
+					"raw": "{\r\n    \"category_id\": \"\",\r\n    \"title_keyword\": \"qqqq\",\r\n    \"post_id\": \"\",\r\n    \"days\": \"\",\r\n    \"subcategory_id\": \"\",\r\n    \"location\": \"\",\r\n    \"country\": \"\",\r\n    \"state\": \"\",\r\n    \"city\": \"\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -488,10 +478,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/search_job",
+					"raw": "https://techg.igiapp.com/automationengineering/api/search_job",
 					"protocol": "https",
 					"host": [
-						"dev",
+						"techg",
 						"igiapp",
 						"com"
 					],
@@ -514,7 +504,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user_type\": 1,\r\n    \"first_name\": \"Sayantan\",\r\n    \"last_name\": \"Bhakta\",\r\n    \"email\": \"sayantan2@goigi.in\",\r\n    \"location\": \"Kolkata\",\r\n    \"longitude\": \"22.88\",\r\n    \"latitude\": \"11.22\",\r\n    \"password\": \"111111\",\r\n    \"company_name\": \"\"\r\n}",
+					"raw": "{\r\n    \"user_type\": 1,\r\n    \"first_name\": \"Demo\",\r\n    \"last_name\": \"Expert\",\r\n    \"email\": \"expert@gmail.com\",\r\n    \"location\": \"Kolkata\",\r\n    \"longitude\": \"22.88\",\r\n    \"latitude\": \"11.22\",\r\n    \"password\": \"123456\",\r\n    \"company_name\": \"\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -522,10 +512,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/registration",
+					"raw": "https://techg.igiapp.com/automationengineering/api/registration",
 					"protocol": "https",
 					"host": [
-						"dev",
+						"techg",
 						"igiapp",
 						"com"
 					],
@@ -548,7 +538,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\" : \"sayantan2@goigi.in\",\r\n    \"password\": \"111111\"\r\n}",
+					"raw": "{\r\n    \"email\" : \"sayantan@goigi.in\",\r\n    \"password\": \"111111\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -556,15 +546,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/login",
+					"raw": "https://www.automationengineering.services/api/login",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"login"
 					]
@@ -611,15 +600,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/send_forget_password",
+					"raw": "https://www.automationengineering.services/api/send_forget_password",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"send_forget_password"
 					]
@@ -648,17 +636,41 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/user_subscription_details",
+					"raw": "https://www.automationengineering.services/api/user_subscription_details",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"user_subscription_details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserSubscriptionDetails",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userid\": \"1\",\r\n    \"user_type\": \"1\"\r\n}"
+				},
+				"url": {
+					"raw": "https://www.automationengineering.services/api/getUserSubscriptionDetails",
+					"protocol": "https",
+					"host": [
+						"www",
+						"automationengineering",
+						"services"
+					],
+					"path": [
+						"api",
+						"getUserSubscriptionDetails"
 					]
 				}
 			},
@@ -671,7 +683,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user_id\" : \"4\",\r\n    \"sub_id\": \"1\",\r\n    \"sub_name\" : \"Trial Period for Freelancers\",\r\n    \"user_email\": \"sayantan2@goigi.in\",\r\n    \"sub_price\" : \"0\",\r\n    \"sub_duration\": \"30\"\r\n}",
+					"raw": "{\r\n    \"user_id\" : \"8\",\r\n    \"sub_id\": \"1\",\r\n    \"sub_name\" : \"Trial Period for Freelancers\",\r\n    \"user_email\": \"sayantan.1@goigi.in\",\r\n    \"sub_price\" : \"0\",\r\n    \"sub_duration\": \"30\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -679,15 +691,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/user_subscription",
+					"raw": "https://www.automationengineering.services/api/user_subscription",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"user_subscription"
 					]
@@ -710,15 +721,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/user_profile",
+					"raw": "https://www.automationengineering.services/api/user_profile",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"user_profile"
 					]
@@ -750,11 +760,6 @@
 							"type": "text"
 						},
 						{
-							"key": "email",
-							"value": "sayantan@goigi.in",
-							"type": "text"
-						},
-						{
 							"key": "mobile",
 							"value": "7586045010",
 							"type": "text"
@@ -772,7 +777,7 @@
 						{
 							"key": "profilePic",
 							"type": "file",
-							"src": "/C:/Users/LENOVO/Pictures/1357_istockphoto-1399565382-170667a.jpg"
+							"src": "/C:/Users/LENOVO/Pictures/6080_ben-den-engelsen-YUu9UAcOKZ4-unsplash.jpg"
 						},
 						{
 							"key": "zip",
@@ -811,21 +816,20 @@
 						},
 						{
 							"key": "user_id",
-							"value": "1",
+							"value": "5",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/update_profile",
+					"raw": "https://www.automationengineering.services/api/update_profile",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"update_profile"
 					]
@@ -848,15 +852,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/education_list",
+					"raw": "https://www.automationengineering.services/api/education_list",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"education_list"
 					]
@@ -879,15 +882,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/save_education",
+					"raw": "https://www.automationengineering.services/api/save_education",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"save_education"
 					]
@@ -902,7 +904,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"1\"\r\n}",
+					"raw": "{\r\n    \"id\": \"3\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -910,15 +912,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/get_educationDetails",
+					"raw": "https://www.automationengineering.services/api/get_educationDetails",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"get_educationDetails"
 					]
@@ -933,7 +934,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"education\" : \"Undergraduate Degrees\",\r\n    \"passing_of_year\" : \"2018\",\r\n    \"college_name\" : \"WBUT1\",\r\n    \"department\" : \"ECE1\",\r\n    \"description\" : \"In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.1\",\r\n    \"id\" : \"1\"\r\n}",
+					"raw": "{\r\n    \"education\" : \"Undergraduate Degrees\",\r\n    \"passing_of_year\" : \"2018\",\r\n    \"college_name\" : \"WBUT1\",\r\n    \"department\" : \"ECE1\",\r\n    \"description\" : \"In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.1\",\r\n    \"id\" : \"3\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -941,15 +942,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/update_education",
+					"raw": "https://www.automationengineering.services/api/update_education",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"update_education"
 					]
@@ -964,7 +964,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"1\"\r\n}",
+					"raw": "{\r\n    \"id\": \"2\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -972,10 +972,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/delete_education",
+					"raw": "https://techg.igiapp.com/automationengineering/api/delete_education",
 					"protocol": "https",
 					"host": [
-						"dev",
+						"techg",
 						"igiapp",
 						"com"
 					],
@@ -1003,15 +1003,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/workexperience_list",
+					"raw": "https://www.automationengineering.services/api/workexperience_list",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"workexperience_list"
 					]
@@ -1034,15 +1033,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/save_workexperience",
+					"raw": "https://www.automationengineering.services/api/save_workexperience",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"save_workexperience"
 					]
@@ -1065,15 +1063,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/get_workexperience",
+					"raw": "https://www.automationengineering.services/api/get_workexperience",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"get_workexperience"
 					]
@@ -1096,15 +1093,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/update_workexperience",
+					"raw": "https://www.automationengineering.services/api/update_workexperience",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"update_workexperience"
 					]
@@ -1119,7 +1115,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"6\"\r\n}",
+					"raw": "{\r\n    \"id\": \"3\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1127,10 +1123,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/delete_workexperience",
+					"raw": "https://techg.igiapp.com/automationengineering/api/delete_workexperience",
 					"protocol": "https",
 					"host": [
-						"dev",
+						"techg",
 						"igiapp",
 						"com"
 					],
@@ -1138,6 +1134,121 @@
 						"automationengineering",
 						"api",
 						"delete_workexperience"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save postjob",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": \"4\",\r\n    \"post_title\": \"IT Support Engineer, L2\",\r\n    \"description\": \"IT Support Engineer, L2 Description\",\r\n    \"duration\": \"2 month\",\r\n    \"key_skills\": [1,2,3],\r\n    \"currency\": \"USD ($)\",\r\n    \"charges\": \"2501\",\r\n    \"category_id\": \"2\",\r\n    \"subcategory_id\": \"1\",\r\n    \"appli_deadeline\": \"2023-06-24\",\r\n    \"country\": \"India\",\r\n    \"state\": \"West Bengal\",\r\n    \"city\": \"Kolkata\",\r\n    \"location\": \"India, West Bengal, Kolkata\",\r\n    \"latitude\": \"22.5726\",\r\n    \"longitude\": \"88.3639\"\r\n}"
+				},
+				"url": {
+					"raw": "https://www.automationengineering.services/api/save_postjob",
+					"protocol": "https",
+					"host": [
+						"www",
+						"automationengineering",
+						"services"
+					],
+					"path": [
+						"api",
+						"save_postjob"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Post Job",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post_id\": \"11\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.automationengineering.services/api/edit_post_job",
+					"protocol": "https",
+					"host": [
+						"www",
+						"automationengineering",
+						"services"
+					],
+					"path": [
+						"api",
+						"edit_post_job"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Post Job",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"11\",\r\n    \"post_title\": \"IT Support Engineer, L3\",\r\n    \"description\": \"IT Support Engineer, L3 Description\",\r\n    \"duration\": \"2 month\",\r\n    \"key_skills\": [1,2,3],\r\n    \"currency\": \"USD ($)\",\r\n    \"charges\": \"2501\",\r\n    \"category_id\": \"2\",\r\n    \"subcategory_id\": \"1\",\r\n    \"appli_deadeline\": \"2023-06-24\",\r\n    \"country\": \"India\",\r\n    \"state\": \"West Bengal\",\r\n    \"city\": \"Kolkata\",\r\n    \"location\": \"India, West Bengal, Kolkata\",\r\n    \"latitude\": \"22.5726\",\r\n    \"longitude\": \"88.3639\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.automationengineering.services/api/update_post_job",
+					"protocol": "https",
+					"host": [
+						"www",
+						"automationengineering",
+						"services"
+					],
+					"path": [
+						"api",
+						"update_post_job"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "My Job",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": \"4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.automationengineering.services/api/myjob",
+					"protocol": "https",
+					"host": [
+						"www",
+						"automationengineering",
+						"services"
+					],
+					"path": [
+						"api",
+						"myjob"
 					]
 				}
 			},
@@ -1158,136 +1269,16 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/save_postbid",
+					"raw": "https://www.automationengineering.services/api/save_postbid",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"save_postbid"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "My Job",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"user_id\": \"8\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/myjob",
-					"protocol": "https",
-					"host": [
-						"dev",
-						"igiapp",
-						"com"
-					],
-					"path": [
-						"automationengineering",
-						"api",
-						"myjob"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "save postjob",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"user_id\": \"2\",\r\n    \"post_title\": \"IT Support Engineer, L2\",\r\n    \"description\": \"IT Support Engineer, L2 Description\",\r\n    \"duration\": \"2 month\",\r\n    \"key_skills\": [1,2,3],\r\n    \"currency\": \"USD ($)\",\r\n    \"charges\": \"2501\",\r\n    \"category_id\": \"2\",\r\n    \"subcategory_id\": \"1\",\r\n    \"appli_deadeline\": \"2023-06-24\",\r\n    \"country\": \"India\",\r\n    \"state\": \"West Bengal\",\r\n    \"city\": \"Kolkata\",\r\n    \"location\": \"India, West Bengal, Kolkata\",\r\n    \"latitude\": \"22.5726\",\r\n    \"longitude\": \"88.3639\"\r\n}"
-				},
-				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/save_postjob",
-					"protocol": "https",
-					"host": [
-						"dev",
-						"igiapp",
-						"com"
-					],
-					"path": [
-						"automationengineering",
-						"api",
-						"save_postjob"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Edit Post Job",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"post_id\": \"2\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/edit_post_job",
-					"protocol": "https",
-					"host": [
-						"dev",
-						"igiapp",
-						"com"
-					],
-					"path": [
-						"automationengineering",
-						"api",
-						"edit_post_job"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Post Job",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"2\",\r\n    \"post_title\": \"IT Support Engineer, L2\",\r\n    \"description\": \"IT Support Engineer, L2 Description\",\r\n    \"duration\": \"2 month\",\r\n    \"key_skills\": [1,2,3],\r\n    \"currency\": \"USD ($)\",\r\n    \"charges\": \"2501\",\r\n    \"category_id\": \"2\",\r\n    \"subcategory_id\": \"1\",\r\n    \"appli_deadeline\": \"2023-06-24\",\r\n    \"country\": \"India\",\r\n    \"state\": \"West Bengal\",\r\n    \"city\": \"Kolkata\",\r\n    \"location\": \"India, West Bengal, Kolkata\",\r\n    \"latitude\": \"22.5726\",\r\n    \"longitude\": \"88.3639\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/update_post_job",
-					"protocol": "https",
-					"host": [
-						"dev",
-						"igiapp",
-						"com"
-					],
-					"path": [
-						"automationengineering",
-						"api",
-						"update_post_job"
 					]
 				}
 			},
@@ -1308,15 +1299,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/jobbid",
+					"raw": "https://www.automationengineering.services/api/jobbid",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"jobbid"
 					]
@@ -1331,7 +1321,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user_id\": \"3\"\r\n}",
+					"raw": "{\r\n    \"user_id\": \"4\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1339,15 +1329,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/products",
+					"raw": "https://www.automationengineering.services/api/products",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"products"
 					]
@@ -1365,7 +1354,7 @@
 					"formdata": [
 						{
 							"key": "user_id",
-							"value": "2",
+							"value": "4",
 							"type": "text"
 						},
 						{
@@ -1381,23 +1370,19 @@
 						{
 							"key": "prod_image[]",
 							"type": "file",
-							"src": [
-								"/C:/Users/LENOVO/Pictures/1813_Profile3 - Copy - Copy.jpg",
-								"/C:/Users/LENOVO/Pictures/6080_ben-den-engelsen-YUu9UAcOKZ4-unsplash.jpg"
-							]
+							"src": "/C:/Users/LENOVO/Pictures/1813_Profile3 - Copy - Copy.jpg"
 						}
 					]
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/add_product",
+					"raw": "https://www.automationengineering.services/api/add_product",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"add_product"
 					]
@@ -1412,7 +1397,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"3\"\r\n}",
+					"raw": "{\r\n    \"id\": \"6\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1420,10 +1405,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/edit_product",
+					"raw": "https://techg.igiapp.com/automationengineering/api/edit_product",
 					"protocol": "https",
 					"host": [
-						"dev",
+						"techg",
 						"igiapp",
 						"com"
 					],
@@ -1446,17 +1431,17 @@
 					"formdata": [
 						{
 							"key": "id",
-							"value": " 3",
+							"value": "6",
 							"type": "text"
 						},
 						{
 							"key": "prod_name",
-							"value": " Add Product through API (updated)",
+							"value": "Add Product through API (updated)",
 							"type": "text"
 						},
 						{
 							"key": "prod_description",
-							"value": " Add Product through API Description (updated)",
+							"value": "Add Product through API Description (updated)",
 							"type": "text"
 						},
 						{
@@ -1471,15 +1456,14 @@
 					]
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/update_product",
+					"raw": "https://www.automationengineering.services/api/update_product",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"update_product"
 					]
@@ -1494,7 +1478,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"3\"\r\n}",
+					"raw": "{\r\n    \"id\": \"2\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1502,10 +1486,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/delete_product",
+					"raw": "https://techg.igiapp.com/automationengineering/api/delete_product",
 					"protocol": "https",
 					"host": [
-						"dev",
+						"techg",
 						"igiapp",
 						"com"
 					],
@@ -1533,10 +1517,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/delete_job",
+					"raw": "https://techg.igiapp.com/automationengineering/api/delete_job",
 					"protocol": "https",
 					"host": [
-						"dev",
+						"techg",
 						"igiapp",
 						"com"
 					],
@@ -1564,10 +1548,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/delete_product_image",
+					"raw": "https://techg.igiapp.com/automationengineering/api/delete_product_image",
 					"protocol": "https",
 					"host": [
-						"dev",
+						"techg",
 						"igiapp",
 						"com"
 					],
@@ -1595,15 +1579,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/save_employer_rating",
+					"raw": "https://www.automationengineering.services/api/save_employer_rating",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"save_employer_rating"
 					]
@@ -1626,10 +1609,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/chatUser_list",
-					"protocol": "https",
+					"raw": "http://techg.igiapp.com/automationengineering/api/chatUser_list",
+					"protocol": "http",
 					"host": [
-						"dev",
+						"techg",
 						"igiapp",
 						"com"
 					],
@@ -1657,15 +1640,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/showmessage_count",
+					"raw": "https://www.automationengineering.services/api/showmessage_count",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"showmessage_count"
 					]
@@ -1688,15 +1670,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/showmessageCountEach",
+					"raw": "https://www.automationengineering.services/api/showmessageCountEach",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"showmessageCountEach"
 					]
@@ -1719,43 +1700,16 @@
 					}
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/showmessage_list",
+					"raw": "https://www.automationengineering.services/api/showmessage_list",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"showmessage_list"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getUserSubscriptionDetails",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"userid\": \"1\",\r\n    \"user_type\": \"1\"\r\n}"
-				},
-				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/getUserSubscriptionDetails",
-					"protocol": "https",
-					"host": [
-						"dev",
-						"igiapp",
-						"com"
-					],
-					"path": [
-						"automationengineering",
-						"api",
-						"getUserSubscriptionDetails"
 					]
 				}
 			},
@@ -1771,15 +1725,14 @@
 					"raw": "{\r\n    \"country_name\": \"India\"\r\n}"
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/home/states_by_country",
+					"raw": "https://www.automationengineering.services/api/home/states_by_country",
 					"protocol": "https",
 					"host": [
-						"dev",
-						"igiapp",
-						"com"
+						"www",
+						"automationengineering",
+						"services"
 					],
 					"path": [
-						"automationengineering",
 						"api",
 						"home",
 						"states_by_country"
@@ -1798,18 +1751,180 @@
 					"raw": "{\r\n    \"state_name\": \"West Bengal\"\r\n}"
 				},
 				"url": {
-					"raw": "https://dev.igiapp.com/automationengineering/api/home/cities_by_state",
+					"raw": "https://www.automationengineering.services/api/home/cities_by_state",
 					"protocol": "https",
 					"host": [
-						"dev",
+						"www",
+						"automationengineering",
+						"services"
+					],
+					"path": [
+						"api",
+						"home",
+						"cities_by_state"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"sayantan@goigi.in\",\r\n    \"password\": \"111111\"\r\n}"
+				},
+				"url": {
+					"raw": "https://www.automationengineering.services/api/login",
+					"protocol": "https",
+					"host": [
+						"www",
+						"automationengineering",
+						"services"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categoryList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.automationengineering.services/api/home/categoryList",
+					"protocol": "https",
+					"host": [
+						"www",
+						"automationengineering",
+						"services"
+					],
+					"path": [
+						"api",
+						"home",
+						"categoryList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "subcategory_by_category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"3\"\r\n}"
+				},
+				"url": {
+					"raw": "https://www.automationengineering.services/api/home/subcategory_by_category",
+					"protocol": "https",
+					"host": [
+						"www",
+						"automationengineering",
+						"services"
+					],
+					"path": [
+						"api",
+						"home",
+						"subcategory_by_category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getKeySkills",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.automationengineering.services/api/Home/getKeySkills",
+					"protocol": "https",
+					"host": [
+						"www",
+						"automationengineering",
+						"services"
+					],
+					"path": [
+						"api",
+						"Home",
+						"getKeySkills"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change biding status",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bidstatus\": \"Selected\",\r\n    \"jodBidid\": \"12\",\r\n    \"postJobid\": \"88\",\r\n    \"jobbiduserid\": \"15\",\r\n    \"jobpostuserid\": \"4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://techg.igiapp.com/automationengineering/api/changebiddingstatus",
+					"protocol": "https",
+					"host": [
+						"techg",
 						"igiapp",
 						"com"
 					],
 					"path": [
 						"automationengineering",
 						"api",
-						"home",
-						"cities_by_state"
+						"changebiddingstatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"2\",\r\n    \"old_password\": \"111111\",\r\n    \"new_password\": \"123456\",\r\n    \"con_password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://techg.igiapp.com/automationengineering/api/reset_password",
+					"protocol": "https",
+					"host": [
+						"techg",
+						"igiapp",
+						"com"
+					],
+					"path": [
+						"automationengineering",
+						"api",
+						"reset_password"
 					]
 				}
 			},
