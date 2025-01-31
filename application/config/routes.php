@@ -1,8 +1,57 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+/*
+| -------------------------------------------------------------------------
+| URI ROUTING
+| -------------------------------------------------------------------------
+| This file lets you re-map URI requests to specific controller functions.
+|
+| Typically there is a one-to-one relationship between a URL string
+| and its corresponding controller class/method. The segments in a
+| URL normally follow this pattern:
+|
+|	example.com/class/method/id/
+|
+| In some instances, however, you may want to remap this relationship
+| so that a different class/function is called than the one
+| corresponding to the URL.
+|
+| Please see the user guide for complete details:
+|
+|	https://codeigniter.com/user_guide/general/routing.html
+|
+| -------------------------------------------------------------------------
+| RESERVED ROUTES
+| -------------------------------------------------------------------------
+|
+| There are three reserved routes:
+|
+|	$route['default_controller'] = 'welcome';
+|
+| This route indicates which controller class should be loaded if the
+| URI contains no data. In the above example, the "welcome" class
+| would be loaded.
+|
+|	$route['404_override'] = 'errors/page_missing';
+|
+| This route will tell the Router which controller/method to use if those
+| provided in the URL cannot be matched to a valid route.
+|
+|	$route['translate_uri_dashes'] = FALSE;
+|
+| This is not exactly a route, but allows you to automatically route
+| controller and method names that contain dashes. '-' isn't a valid
+| class or method name character, so it requires translation.
+| When you set this option to TRUE, it will replace ALL dashes in the
+| controller and method URI segments.
+|
+| Examples:	my-controller/index	-> my_controller/index
+|		my-controller/my-method	-> my_controller/my_method
+*/
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
 $route['register'] = "home/signup";
 $route['email-verification/(:any)'] = "user/login/emailVerification/$1";
 $route['login'] = "home/login_page";
@@ -58,7 +107,6 @@ $route['update-postjob/(:any)'] = "welcome/update_post_job/$1";
 $route['checkSubscriptionForUser'] = "user/dashboard/checkSubscriptionForUser";
 $route['paystackCheckout/(:any)/(:any)/(:any)'] = "Home/paystackCheckout/$1/$2/$3";
 
-
 //ADMIN URL
 $route['admin'] = 'admin/login/index';
 $route['admin/logout'] = 'admin/login/logout';
@@ -71,9 +119,10 @@ $route['admin/our-services'] = 'admin/manage_home/Our_services/index';
 $route['admin/banner'] = 'admin/manage_home/Banner/index';
 $route['admin/email-template'] = 'admin/Email_template/index';
 $route['admin/chat_details/(:any)/(:any)'] = "admin/chat/adminShowMessage_list/$1/$2";
-//$route['admin/deletepostdetail/(:any)'] = "admin/Post_job/deletepostdetail/$1";
+// $route['admin/deletepostdetail/(:any)'] = "admin/Post_job/deletepostdetail/$1";
 $route['admin/deletepostdetail'] = "admin/Post_job/deletepostdetail";
 $route['admin/update-postjob/(:any)'] = "admin/Post_job/update_post_job/$1";
+
 
 //API URLS
 $route['api/registration'] = 'api/Authentication/registration';
@@ -92,14 +141,13 @@ $route['api/expert_pricing'] = 'api/Home/freelancer_pricing';
 $route['api/about'] = 'api/Home/about';
 $route['api/contact'] = 'api/Home/contact';
 $route['api/save_contact'] = 'api/Home/save_contact';
-$route['api/product_contact'] = 'api/Home/product_contact';
 $route['api/privacy'] = 'api/Home/privacy';
 $route['api/term_and_conditions'] = 'api/Home/term_and_conditions';
 $route['api/careertips_details'] = 'api/Home/careertips_details';
 $route['api/search_job'] = 'api/Home/search_job';
+$route['api/getUserSubscriptionDetails'] = 'api/user_dashboard/getUserSubscriptionDetails';
 $route['api/user_subscription_details'] = "api/User_dashboard/subscription_details";
 $route['api/user_subscription'] = "api/User_dashboard/userSubscription";
-$route['api/getUserSubscriptionDetails'] = "api/User_dashboard/getUserSubscriptionDetails";
 $route['api/user_profile'] = "api/User_dashboard/profile_settings";
 $route['api/update_profile'] = "api/User_dashboard/update_profile";
 $route['api/education_list'] = "api/User_dashboard/education_list";
@@ -130,5 +178,13 @@ $route['api/chatUser_list'] = "api/User_dashboard/chatUser_list";
 $route['api/showmessage_count'] = "api/User_dashboard/showmessage_count";
 $route['api/showmessageCountEach'] = "api/User_dashboard/showmessageCountEach";
 $route['api/showmessage_list'] = "api/User_dashboard/showmessage_list";
-$route['api/changebiddingstatus'] = "api/User_dashboard/changebiddingstatus";
-$route['api/reset_password'] = "api/User_dashboard/reset_password";
+
+
+
+
+
+
+
+
+
+//$route['api/home_list'] = 'api/Home/home_list';
