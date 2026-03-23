@@ -553,7 +553,7 @@ docs directory of the SDK.
 
 This library makes use of two code quality tools, plus a full PHPUnit test suite.
 
-* [phpcs](https://github.com/squizlabs/PHP_CodeSniffer)
+* [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer)
 
 To run phpcs, enter the following on the command line:
 
